@@ -59,7 +59,7 @@ class DoorKeeper(discord.ui.View):
     def __init__(self):
         super().__init__(timeout=None)
 
-    @discord.ui.button(label='Start Test...', style=discord.ButtonStyle.green)
+    @discord.ui.button(label='Start puzzle...', style=discord.ButtonStyle.green)
     async def start_test(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.send_modal(Questionnaire())
 
@@ -73,7 +73,7 @@ async def on_ready():
                 print(repr(guild), repr(channel))
                 async for message in channel.history():
                     await message.delete()
-                await channel.send("Welcome. Due to Discord unable to handle the spam problem. We now require you to solve this puzzle before you can enter. If you encounter any problems, send a private message to Daid.", view=DoorKeeper())
+                await channel.send("Welcome. Due to Discord unable to handle the spam problem. We do not like that we have to do this, as we like to be open and inclusive. But we now require you to solve this puzzle before you can enter. If you encounter any problems, send a private message to Daid.", view=DoorKeeper())
 
 @client.hybrid_command(description="Use this to give yourself the Rando Racer role, so you get pinged when there are races happening")
 async def irace(ctx):
